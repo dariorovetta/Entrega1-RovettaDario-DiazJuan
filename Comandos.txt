@@ -1,0 +1,11 @@
+# Cuando se edita la informacion de models.py hay que ejecutar
+python manage.py makemigrations
+
+# Para que se actualice la base de datos hay que ejecutar
+python manage.py migrate
+
+# Para ejecutar manage.py y funcione la web local, se ejecuta
+python manage.py runserver
+
+# Nos abre el proyecto en la capeta que nos encontramos de la terminal
+code -r .

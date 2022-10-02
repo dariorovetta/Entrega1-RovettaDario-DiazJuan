@@ -40,3 +40,4 @@
 16.- Crear los familiares pedidos por la URL y verlos por la otra URL.
 17.- Aplicar cambio en GIT con "git add ."
 18.- Hacer un commit en GitHub con "git commit -m <comentario>"
+19.- Aplicamos los cambios en el repertorio web con "git push origin main"

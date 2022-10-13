@@ -1,0 +1,48 @@
+1.-  Creamos una carpeta
+2.-  Entramos a la carpeta desde la terminal yendo con (cd <nombre de la carpeta>)
+3.-  Aplicamos desde la terminal "code -r ." para que abra la nueva carpeta
+4.-  Creamos un entorno virtual con "python -m venv <nombre entorno virtual>"
+5.-  Activar el entorno virtual con ". <nombre entorno virtual>/Scripts/activate"
+6.-  Inicializar GIT con "git init"
+7.-  Conectar mi repositorio con la nube de GitHub
+    a.- Verificar el estado con "git status"
+    b.- Agregar los archivos con "git add ."
+    c.- Agregar un commit a los archivos con "git commit -m <mensaje>"
+    d.- Verificar si se hizo el commit con "git log --oneline"
+    e.- Copiar los comandos de la pagina GitHub Ej:
+        git remote add origin https://github.com/dariorovetta/MTV-DarioRovetta.git
+        git branch -M main
+        git push -u origin main
+8.-  Instalar Django con "pip install Django"
+9.-  Probar si Django se instalo creamos un requirements.txt ejecutando: "pip freeze > requirements.txt" 
+10.- Iniciar el proyecto Django con "django-admin startproject <nombredeproyecto>"
+    a.- Una vez creado el proyecto hay que eliminar una de las carpetas que se repiten
+    b.- En este caso, hay que dejar una sola carpeta "entregableMVT" con todos los archivos que se crearon recien
+    c.- "Estructura de como deberia quedar la carpeta de nuestro proyecto por el momento"
+            <PROYECTO>
+                 | -> <entregableMVT>
+                 | -> manage.py
+                 | -> .gitignore
+                 | -> MVTdario(venv)
+                 | -> requirements.txt
+11.- Probar si nuestro proyecto funciona con "python manage.py runserver"
+12.- Generar la base de datps con la configuracion de django con "python manage.py migrate"
+13.- Crear una vista con el nombre "views.py" en la carpeta de nuestro proyecto
+    a.- Dentro de la vista crear las funciones que necesitamos
+    b.- Como las vistas se ejecutan con cargadores hay que agregar la ruta de las plantillas en "settings.py"
+14.- En el archivo "urls.py" tenemos que agregar las vistas que queremos ver
+15.- Crear una app dentro del proyecto con "python manage.py startapp <nombreapp>"
+    a.- Dentro de la app en el archivo "models.py" crear la clase "Familiar"
+    b.- Agregarmos nuestra app en el archivo "settings.py"
+    c.- Verificar si esta todo bien con "python manage.py check appMVT"
+    d.- Convertimos nuestros modelos en base de datos con "python manage.py makemigrations"
+    e.- Migrar los datos con "python manage.py migrate"
+16.- Crear los familiares pedidos por la URL y verlos por la otra URL.
+17.- Aplicar cambio en GIT con "git add ."
+18.- Hacer un commit en GitHub con "git commit -m <comentario>"
+19.- Aplicamos los cambios en el repertorio web con "git push origin main"
+
+
+Importante
+# Para crear un usuario como administrador:
+python manage.py createsuperuser

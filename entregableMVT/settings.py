@@ -55,7 +55,7 @@ ROOT_URLCONF = 'entregableMVT.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\dario\Videos\VSC\MVT\proyecto\entregableMVT\plantillas"],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

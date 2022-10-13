@@ -4,7 +4,7 @@
 
 {% block contenidoQueCambia %}
 
-<h2>BUSQUEDA DE CAMADAS</h2>
+<h2>Busqueda de Familiares por Apellido</h2>
 
 {% if miFormulario.errors %}
 
@@ -14,20 +14,19 @@
 
 <form action="/buscar/" method="GET">
 
-    <input type="number" name="camada" id="camada">
+    <input type="text" name="apellido" id="apellido">
 
     <input type="submit" value="Buscar">
 
 </form>
 
-{% if cursos %}
+{% if familiares %}
 
-    <p>Estamos buscando el: {{camada}}</p>
+    <p>Estamos buscando: {{apellido}}</p>
     
     <ul>
-    {% for curso in cursos %}
-        <li>{{curso.nombre}}</li>
-        <li>{{curso.camada}}</li>
+    {% for familiar in familiares %}
+        <li>{{familiar.nombre}} {{familiar.apellido}}</li>
     {% endfor %}
 
     </ul>

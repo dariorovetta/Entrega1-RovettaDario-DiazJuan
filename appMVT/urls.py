@@ -5,8 +5,10 @@ urlpatterns = [
     path('', views.inicio, name="Inicio"),  # Esta es nuestra primer view
     path('familiares', views.familiares, name="Familiares"),
 
-    #path('busquedaCamada', views.busquedaCamada, name="BusquedaCamada"),
-    #path('buscar/', views.buscar),
+    path('busquedaApellido', views.busquedaApellido, name="BusquedaApellido"),
+    path('buscar/', views.buscar),
+    
+    path('about', views.about, name="About"),
 
 ]
 

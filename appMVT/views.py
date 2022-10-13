@@ -8,6 +8,11 @@ from django.http import HttpResponse
 def inicio(request):
 
       return render(request, "appMVT/inicio.html")
+
+# Vista de About
+def about(request):
+
+      return render(request, "appMVT/about.html")
   
 # Vista de los Familiares
 def familiares(request):
@@ -36,30 +41,26 @@ def familiares(request):
 
 
 
-# --------------------------------
 
-"""
 # Crear vista de Buscar Camadas
-def busquedaCamada(request):
+def busquedaApellido(request):
       
-      return render(request, "appCoder/busquedaCamada.html")
+      return render(request, "appMVT/busquedaApellido.html")
 
 # Crear vista de Busqueda
 def buscar(request):
       
-      if request.GET["camada"]:
+      if request.GET["apellido"]:
             
             # Respuesta respuesta = f"Estoy buscando la camada nro: {request.GET['camada'] }"
-            camada = request.GET['camada']
-            cursos = Curso.objects.filter(camada__icontains=camada)
+            apellido = request.GET['apellido']
+            familiares = Familiar.objects.filter(apellido__icontains=apellido)
             
-            return render(request, "appCoder/busquedaCamada.html", {"cursos":cursos, "camada":camada})
+            return render(request, "appMVT/busquedaApellido.html", {"familiares":familiares, "apellido":apellido})
       
       else:
             
             respuesta = "No enviaste datos"
       
       # return HttpResponse(respuesta)
-      return render(request, "appCoder/busquedaCamada.html", {"respuesta":respuesta})
-      
-"""
+      return render(request, "appMVT/busquedaApellido.html", {"respuesta":respuesta})

@@ -1,4 +1,19 @@
-Pasos para crear el MVT
+Pasos para probar la aplicación:
+
+1.- Activamos el entorno virtual 
+2.- Ejecutamos python manage.py runserver
+3.- Buscamos la dirección http://127.0.0.1:8000/
+4.- Ya en este punto entramos a la pagina y podemos navegar: En la barra de navegación:
+    a: Inicio
+    b: Familiares: Se encuentra en formulario para crear el nuevo familiar.
+    c: Buscar familiar: se hace la busqueda por apellido, en caso de no encontrar se muestra un mensaje "No hay datos con esa descripción", si se manda vacio aparece otro mensaje que dice "No enviastes datos", y si encuentra el apellido, se crea una lista con los datos encontrados en la base datos.
+    d: Acerta de nosostros (Datos de Dario Rovetta y Juan Carlos Díaz G.)
+
+
+
+
+Información adicional paso a paso para crear el MVT Proyecto Intermedio (apuntes generales).
+
 1.-  Creamos una carpeta (para el proyecto)
 2.-  Entramos a la carpeta desde la terminal (para indicar la ruta: cd nombre del proyecto)   o desde el menú 
 3.-  Aplicamos desde la terminal $ "code -r .  para que abra la nueva carpeta

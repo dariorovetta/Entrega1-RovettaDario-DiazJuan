@@ -43,7 +43,7 @@ $ git remote add origin  xxxxxx   / $ git branch -M main  / $ git push -u origin
 	19.- Aplicamos los cambios en el repertorio web con "git push origin main"
 
 Para crear una aplicación
-Python manage.py startapp (nombre de la aplicación) home
+Python manage.py startapp (nombre de la aplicación)
 Se crea una carpeta con varios archivos (indicando que se va a estar trabajando como con paquetes)
 El modelo es el esqueto que determina como va a estar trabajando la información/ viene relacionado directamente con la relación de la base de datos
 
@@ -59,27 +59,18 @@ edad = models.IntegerField()
 Ahora tengo que decirle a mi base de datos sepa que cree este modelo:
 Primero debo ir al archivo de settings.py en la carpeta proyecto, e incorporar en:
 INSTALLED_APPS = [
-agregar: home
+agregar: (nombre aplicacion)
 ]
 Luego seguimos:
 $ python manage.py makemigrations
 Es recomendable tener instalada la extensión: SQLite Viewer de Florian Klampfer
 $ python manage.py migrate (se crea la BD y chicleando encima podemos ver el contenido)
- Si realizo alguna modificación a la BD por ejemplo le agrego:
-fecha_nacimiento = models.DateField()
-tenemos que volver a actualizar con:
-$ python manage.py makemigrations
-Si me genera un mensaje de advertencia seleccionamos modificar manualmente el archivo models.py y le agregamos:
-fecha_nacimiento = models.DateField(null=True)
+Si me genera un mensaje de advertencia seleccionamos modificar manualmente el archivo models.py y le 
 y volvemos a ejecutar el comando
 $ python manage.py makemigrations
+Editar el error
 Luego:
 $ python manage.py migrate
-
-
-{% for persona in personas%}
-<li> {{persona}}</li>
-{% endfor %}
 
 Para traer personas de la BD tenemos que ver que lo importe:
 from home.models import Persona (en la parte superior del archivo)

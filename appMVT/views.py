@@ -52,7 +52,6 @@ def buscar(request):
       
       if request.GET["apellido"]:
             
-            # Respuesta respuesta = f"Estoy buscando la camada nro: {request.GET['camada'] }"
             apellido = request.GET['apellido']
             familiares = Familiar.objects.filter(apellido__icontains=apellido)
             
@@ -62,5 +61,5 @@ def buscar(request):
             
             respuesta = "No enviaste datos"
       
-      # return HttpResponse(respuesta)
+      # return
       return render(request, "appMVT/busquedaApellido.html", {"respuesta":respuesta})

@@ -1,0 +1,23 @@
+{% extends 'appMVT/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h2>Listado de Familiares</h2>
+
+    {% for p in familiares %}
+
+        <li>{{p}}</li>
+        <button>
+            <a href="{% url 'EliminarFamiliar' p.id %}">Eliminar</a>
+            <a href="{% url 'EditarFamiliar' p.id %}">Editar</a>
+        </button>
+
+    {% endfor %}
+    
+    <div>
+    <a href="http://127.0.0.1:8000/crearFamiliares">Crear un nuevo familiar</a>
+    </div>
+
+{% endblock  %}

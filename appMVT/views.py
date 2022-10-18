@@ -1,10 +1,25 @@
 # Importar lo necesario
-from django.shortcuts import render
+from typing import List
+from django.shortcuts import redirect, render, HttpResponse
 from appMVT.forms import *
 from .models import *
 from django.http import HttpResponse
 
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+#Para el Login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+# Decorador por defecto
+from django.contrib.auth.decorators import login_required
+
+
 # Vista de Inicio
+@login_required
 def inicio(request):
 
       return render(request, "appMVT/inicio.html")
@@ -23,7 +38,7 @@ def crearFamiliares(request):
             
             print(miFormulario)
             
-            if miFormulario.is_valid:  # Si paso la validacion de Django
+            if miFormulario.is_valid():  # Si paso la validacion de Django
             
                   informacion = miFormulario.cleaned_data
       
@@ -103,7 +118,7 @@ def editarFamiliar(request, id):
             
             print(miFormulario)
             
-            if miFormulario.is_valid:  # Si paso la validacion de Django
+            if miFormulario.is_valid():  # Si paso la validacion de Django
             
                   informacion = miFormulario.cleaned_data
       
@@ -125,3 +140,89 @@ def editarFamiliar(request, id):
       # Voy al html que me permite editar
       return render(request, "appMVT/editarFamiliar.html", {"miFormulario":miFormulario, "id": id})
       
+      
+# Clases basadas en vistas
+
+# ListView --> Nos permite ver todos los cursos
+# Al tener "LoginRequiredMixin", se necesita iniciar secion para que funcione
+class FamiliarList(LoginRequiredMixin, ListView):
+      
+      model = Familiar
+      template_name = "appMVT/familiares_list.html"
+      login_url = "/login/"
+      redirect_field_name = ""
+      
+      
+# DetailView --> Para ver el detalle
+class FamiliarDetalle(DetailView):
+      
+      model = Familiar
+      template_name = "appMVT/familiar_detalle.html"
+      
+# CreateView --> Para crear
+class FamiliarCreacion(CreateView):
+      
+      model = Familiar
+      success_url = "/familiares/list"
+      fields = ['nombre', 'apellido', 'edad', 'fechaNacimiento']
+      
+# UpdateView --> Para editar
+class FamiliarUpdate(UpdateView):
+      
+      model = Familiar
+      success_url = "/familiares/list"
+      fields = ['nombre', 'apellido', 'edad', 'fechaNacimiento']
+      
+# DeleteView --> Para eliminar
+class FamiliarDelete(DeleteView):
+      
+      model = Familiar
+      success_url = "/familiares/list"
+      
+
+# Vista del login
+def login_request(request):
+      
+      if request.method == 'POST':
+            form = AuthenticationForm(request, data = request.POST) 
+            
+            if form.is_valid(): 
+            
+                  usuario = form.cleaned_data.get('username')
+                  contra = form.cleaned_data.get('password')
+                  
+                  user = authenticate(username=usuario, password=contra)
+                  
+                  if user is not None:
+                        login(request, user)
+                        
+                        return render(request, "appMVT/inicio.html", {"mensaje":f"¡Bienvenido! {usuario}"})
+                  else:
+                        return render(request, "appMVT/inicio.html", {"mensaje":"Error, datos incorrectos"})
+      
+            else:
+                  return render(request, "appMVT/inicio.html", {"mensaje":"Error, formulario erroneo"})
+      
+      form = AuthenticationForm()
+      
+      return render(request, "appMVT/login.html", {'form':form})
+
+
+# Vista para crear usuario
+def register(request):
+      if request.method == 'POST':
+            
+            #form = UserCreationForm(request.POST)
+            form = UserRegisterForm(request.POST)
+            
+            if form.is_valid():
+                  
+                  username = form.cleaned_data['username']
+                  form.save()
+                  return render(request, "appMVT/inicio.html", {"mensaje":"Usuario Creado :)"})
+            
+      else:
+            #form = UserCreationForm()
+            form = UserRegisterForm()
+            
+      return render(request, "appMVT/registro.html", {"form":form})

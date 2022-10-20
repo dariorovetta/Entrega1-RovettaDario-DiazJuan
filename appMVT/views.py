@@ -21,8 +21,10 @@ from django.contrib.auth.decorators import login_required
 # Vista de Inicio
 @login_required
 def inicio(request):
+      
+      avatares = Avatar.objects.filter(user=request.user.id)
 
-      return render(request, "appMVT/inicio.html")
+      return render(request, "appMVT/inicio.html", {"url":avatares[3].imagen.url})
 
 # Vista de About
 def about(request):
@@ -226,3 +228,59 @@ def register(request):
             form = UserRegisterForm()
             
       return render(request, "appMVT/registro.html", {"form":form})
+
+
+@login_required
+def editarPerfil(request):
+      
+      # Instancia del login
+      usuario = request.user
+      
+      # Si es metodo POST hago lo mismo que el agregar
+      if request.method == 'POST':
+            
+            miFormulario = UserEditForm(request.POST)
+            
+            if miFormulario.is_valid():
+                  
+                  informacion = miFormulario.cleaned_data
+                  
+                  # Datos que se modificaran
+                  usuario.email = informacion['email']
+                  usuario.password1 = informacion['password1']
+                  usuario.password2 = informacion['password2']
+                  usuario.save()
+                  
+                  return render(request, "appMVT/inicio.html")  # Vuelvo al inicio
+            
+      # En caso de que no sea post
+      else:
+            # Creo el formulario con lo datos que voy a modificar
+            miFormulario = UserEditForm(initial={'email':usuario.email})
+            
+      # Voy al html que me permite editar
+      return render(request, "appMVT/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+
+@login_required
+def agregarAvatar(request):
+      if request.method == 'POST':
+
+            miFormulario = AvatarFormulario(request.POST, request.FILES)  # Aquí me llega toda la información del html
+
+            if miFormulario.is_valid():  # Si pasó la validación de Django
+
+
+                  u = User.objects.get(username=request.user)
+                
+                  avatar = Avatar(user=u, imagen=miFormulario.cleaned_data['imagen']) 
+      
+                  avatar.save()
+
+                  return render(request, "appMVT/inicio.html")  # Vuelvo al inicio o a donde quieran
+
+      else: 
+
+            miFormulario= AvatarFormulario()  # Formulario vacio para construir el html
+
+      return render(request, "appMVT/agregarAvatar.html", {"miFormulario":miFormulario})

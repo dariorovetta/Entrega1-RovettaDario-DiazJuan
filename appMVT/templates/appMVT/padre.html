@@ -27,7 +27,12 @@
                 <a class="navbar-brand" href="{% url "LeerFamiliares" %}">Ver Familiares</a>
                 <a class="navbar-brand" href="{% url "BusquedaApellido" %}">Buscar Familiar</a>
                 <a class="navbar-brand" href="{% url "About" %}">Acerca de Nosotros</a>
-                <a class="btn btn-primary" href="{% url "Login" %}">Login</a>
+                {% if not request.user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url "Login" %}">INICIAR</a>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->

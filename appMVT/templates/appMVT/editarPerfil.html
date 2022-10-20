@@ -1,0 +1,22 @@
+{% extends 'appMVT/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h2>Formulario - Editar Perfil</h2>
+<h2>De {{usuario}}</h2>
+
+<form action="" method="POST">{% csrf_token %}
+
+    <table>
+
+        {{ miFormulario.as_table }}
+    
+    </table>
+
+    <input type="submit", value="Enviar">
+    
+</form>
+
+{% endblock  %}

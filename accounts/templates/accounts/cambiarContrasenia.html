@@ -1,0 +1,15 @@
+{% extends 'appMVT/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<form action={% url 'CambiarContrasenia' %} method="POST">
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <button>Cambiar</button>
+</form>
+
+{% endblock  %}

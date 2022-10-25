@@ -4,10 +4,10 @@
 
 {% block contenidoQueCambia %}
 
-<h2>Formulario - Editar Perfil</h2>
-<h2>De {{usuario}}</h2>
+<h2>Editar Perfil</h2>
+<!--<h2>De {{usuario}}</h2>-->
 
-<form action="" method="POST">{% csrf_token %}
+<form action="" method="POST" enctype='multipart/form-data'>{% csrf_token %}
 
     <table>
 

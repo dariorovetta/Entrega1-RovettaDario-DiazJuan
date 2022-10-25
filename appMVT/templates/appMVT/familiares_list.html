@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Familiar Detalle</title>
-</head>
-<body>
+{% extends 'appMVT/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
 
     <h1>Familiares - Python</h1>
         <ul>
@@ -15,13 +11,12 @@
                 <li>
                     <p>NOMBRE: {{ familiar.nombre }} </p>
                     <p>
-                        <a href="{% url 'Detail' familiar.id %}">Ver</a>
-                        <a href="{% url 'Edit' familiar.id %}">Editar</a>
-                        <a href="{% url 'Delete' familiar.id %}">Borrar</a>
+                        <a href="{% url 'Detallar' familiar.id %}">Detalle</a>
+                        <a href="{% url 'Editar' familiar.id %}">Editar</a>
+                        <a href="{% url 'Borrar' familiar.id %}">Borrar</a>
                     </p>
                 </li>
             {% endfor %}
         </ul>
 
-</body>
-</html>
+{% endblock  %}

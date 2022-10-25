@@ -14,9 +14,4 @@ class Familiar(models.Model):
     apellido = models.CharField(max_length=30)
     edad = models.IntegerField()
     fechaNacimiento = models.DateField(null=True)
-    
-class Avatar(models.Model):
-  # Vinculo con el usuario
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  # Subcaperta avatares de media :) 
-  imagen = models.ImageField(upload_to='avatares', null=True, blank = True)
+ 

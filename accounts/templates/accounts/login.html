@@ -8,8 +8,10 @@
 
         {% csrf_token %}
 
-        {{form.as_p}}
-
+            <table>
+                {{form.as_p}}
+            </table>
+            
         <button type="submit">Iniciar Sesión</button>
     
     </form>

@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Familiar Detalle</title>
-</head>
-<body>
+{% extends 'appMVT/padre.html' %}
 
+{% load static %}
 
-    <p>Nombre del Familiar: <i>{{ familiar.nombre }}</i></p>
+{% block contenidoQueCambia %}
+
+<div>
+    <p>Nombre: <i>{{ familiar.nombre }}</i></p>
     <p>Apellido: <i>{{ familiar.apellido }}</i></p>
     <p>Edad: <i>{{ familiar.edad }}</i></p>
     <p>Fecha de Nacimiento: <i>{{ familiar.fechaNacimiento }}</i></p>
     <p>
-        <a href="{% url 'List' %}">Regresar</a>
+        <a href="{% url 'Ver' %}">Regresar</a>
     </p>
-
-
-</body>
-</html>
+</div>
+{% endblock  %}

@@ -49,4 +49,4 @@ python manage.py createsuperuser
 
 
 
-FFF
+python manage.py runserver

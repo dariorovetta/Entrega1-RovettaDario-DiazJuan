@@ -14,4 +14,13 @@ class Familiar(models.Model):
     apellido = models.CharField(max_length=30)
     edad = models.IntegerField()
     fechaNacimiento = models.DateField(null=True)
- 
+    
+""" class BlogFamiliar(models.Model):
+    
+    def __str__(self):
+      return f"Nombre: {self.nombre} - Apellido: {self.apellido} - Edad: {self.edad} - Fecha de Nacimiento: {self.fechaNacimiento}"
+
+    titulo = models.CharField(max_length=30)
+    sub_titulo = models.CharField(max_length=30)
+    contenido = models.IntegerField()
+    fechaNacimiento = models.DateField(null=True) """

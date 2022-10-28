@@ -4,7 +4,7 @@
 
 {% block contenidoQueCambia %}
 
-    <form action={% url 'Crear_blogfamiliar' %} method="POST">
+    <form action={% url 'CrearBlogFamiliar' %} method="POST">
 
         {% csrf_token %}
         <table>
@@ -13,5 +13,13 @@
         </table>
         <button>Crear Blog Familiar</button>
     </form>
+    
+{% comment %}     <form method="POST">
 
+        {% csrf_token %}
+        {{form.media}}
+        {{ form.as_p }}
+
+        <input type="submit" value="Enviar" />
+    </form> {% endcomment %}
 {% endblock  %}

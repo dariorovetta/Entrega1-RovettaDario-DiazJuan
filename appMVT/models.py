@@ -21,11 +21,11 @@ class Familiar(models.Model):
 class BlogFamiliar(models.Model):
 
     def __str__(self):
-        return f"Nombre: {self.nombre} - Apellido: {self.apellido} - Edad: {self.edad} - Fecha de Nacimiento: {self.fechaNacimiento}"
+        return f"Titulo: {self.titulo} - Sub_titulo: {self.sub_titulo} - Autor: {self.autor} - Fecha de creacion: {self.fechaCreacion}"
 
     titulo = models.CharField(max_length=30)
     sub_titulo = models.CharField(max_length=30)
-    descripcion = RichTextField(null=True)
     autor = models.CharField(max_length=30)
     fechaCreacion = models.DateField(null=True)
     imagen = models.ImageField(upload_to='imagenes', null=True, blank=True)
+    descripcion = RichTextField(null=True)

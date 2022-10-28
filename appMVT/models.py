@@ -25,7 +25,7 @@ class BlogFamiliar(models.Model):
 
     titulo = models.CharField(max_length=30)
     sub_titulo = models.CharField(max_length=30)
-    descripcion = RichTextField()
+    descripcion = RichTextField(null=True)
     autor = models.CharField(max_length=30)
     fechaCreacion = models.DateField(null=True)
     imagen = models.ImageField(upload_to='imagenes', null=True, blank=True)

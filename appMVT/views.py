@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from appMVT.forms import FamiliarFormulario
-from appMVT.models import Familiar
+from appMVT.models import Familiar, BlogFamiliar
 
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -174,3 +174,24 @@ class FamiliarDelete(DeleteView):
       template_name = "appMVT/familiar_confirm_delete.html"
       success_url = "/familiares/list"
 
+# CreateView --> Para crear blog Familiar
+
+class CrearBlogFamiliar(LoginRequiredMixin, CreateView):
+      
+      model = BlogFamiliar
+      success_url = "/appMVT/blogfamiliars"
+      template_name = "appMVT/crear_blogfamiliar.html"
+      fields = ['titulo', 'sub_titulo', 'descripcion', 'autor','fechaCreacion','imagen']
+
+class EditarBlogFamiliar(LoginRequiredMixin, UpdateView):
+      
+      model = BlogFamiliar
+      success_url = "/appMVT/blogfamiliars"
+      template_name = "appMVT/editar_blogfamiliar.html"
+      fields = ['titulo', 'sub_titulo', 'descripcion', 'autor','fechaCreacion','imagen']
+
+class EliminarBlogFamiliar(LoginRequiredMixin, DeleteView):
+      
+      model = BlogFamiliar
+      success_url = "/appMVT/blogfamiliars"
+      template_name = "appMVT/elimiar_blogfamiliar.html"

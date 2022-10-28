@@ -1,0 +1,17 @@
+{% extends 'appMVT/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <form action={% url 'Crear_blogfamiliar' %} method="POST">
+
+        {% csrf_token %}
+        <table>
+            {{form.media}}
+            {{form}}
+        </table>
+        <button>Crear Blog Familiar</button>
+    </form>
+
+{% endblock  %}

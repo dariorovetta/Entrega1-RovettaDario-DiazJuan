@@ -25,23 +25,12 @@
                 <a class="navbar-brand" href="{% url "Inicio" %}">Inicio</a>
                 <a class="navbar-brand" href="{% url "Crear" %}">Crear</a>
                 <a class="navbar-brand" href="{% url "Ver" %}">Ver</a>
-                <a class="navbar-brand" href="{% url "BusquedaApellido" %}">Buscar</a>
-                <a class="navbar-brand" href="{% url "Register" %}">Registrate!!!</a>
+                <a class="navbar-brand" href="{% url "Register" %}">¡Registrate!</a>
                 {% if not request.user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url "Login" %}">INICIAR</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
-                <a class="navbar-brand" href="{% url "Perfil" %}">
-
-                    {% if request.user.extensionusuario.avatar %}
-                    <img height="40px" src={{request.user.extensionusuario.avatar.url}} alt="">
-                    {% else %}
-                    <img height="40px" src= "https://img2.freepng.es/20180623/iqh/kisspng-computer-icons-avatar-social-media-blog-font-aweso-avatar-icon-5b2e99c40ce333.6524068515297806760528.jpg" alt="Imagen no cargada">
-                    
-                    {% endif %}   
-
-
-                </a>
+                <a class="navbar-brand" href="{% url "Perfil" %}">Perfil</a>
                 <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
                 <a class="btn btn-primary" href="{% url "Logout" %}">Salir</a>
                 {% endif %}
@@ -56,20 +45,9 @@
                             <!-- Page heading-->
                             {% block contenidoQueCambia %}
                             {% endblock  %}
-                            <!-- Signup form-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- * * SB Forms Contact Form * *-->
-                            <!-- * * * * * * * * * * * * * * *-->
-                            <!-- This form is pre-integrated with SB Forms.-->
-                            <!-- To make this form functional, sign up at-->
-                            <!-- https://startbootstrap.com/solution/contact-forms-->
-                            <!-- to get an API token!-->
+
                             <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                <!-- Email address input-->
-                                <!-- Submit success message-->
-                                <!---->
-                                <!-- This is what your users will see when the form-->
-                                <!-- has successfully submitted-->
+
                                 <div class="d-none" id="submitSuccessMessage">
                                     <div class="text-center mb-3">
                                         <div class="fw-bolder">Form submission successful!</div>
@@ -77,10 +55,7 @@
                                         <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                                     </div>
                                 </div>
-                                <!-- Submit error message-->
-                                <!---->
-                                <!-- This is what your users will see when there is-->
-                                <!-- an error submitting the form-->
+
                                 <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                             </form>
                         </div>
@@ -89,15 +64,6 @@
             </div>
         </header>
 
-
-        
-
-        <!-- Icons Grid-->
-        
-        <!-- Image Showcases-->
-        <!-- Testimonials-->
-        <!-- Call to Action-->
-        <!-- Footer-->
         <footer class="footer bg-light">
             <div class="container">
                 <div class="row">

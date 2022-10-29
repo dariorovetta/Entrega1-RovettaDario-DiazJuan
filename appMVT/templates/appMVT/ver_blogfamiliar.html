@@ -4,19 +4,33 @@
 
 {% block contenidoQueCambia %}
 
-    <h1>Blog de Familiares</h1>
-        <ul>
+    <h2>Blog de Familiares</h2>
+    <p></p>
+    <form action={% url 'VerBlogFamiliar' %} method="GET">
+        {{formulario}}
+        <button>Buscar</button>
+    </form>
+
+    {% if object_list %}
+
+
+        <ul style="text-align: left">
+            <p></p>
             {% for blogfamiliar in object_list %}
 
                 <li>
-                    <p>TITULO: {{ blogfamiliar.titulo }} </p>
-                    <p>
+                    <p>Título: {{ blogfamiliar.titulo }} -->
+                    
                         <a href="{% url 'EditarBlogFamiliar' blogfamiliar.id %}">Editar</a>
-                        <a href="{% url 'EliminarBlogFamiliar' blogfamiliar.id %}">Borrar</a>
                         <a href="{% url 'DetalleBlogFamiliar' blogfamiliar.id %}">Detalle</a>
+                        <a style="color:red" href="{% url 'EliminarBlogFamiliar' blogfamiliar.id %}">Borrar</a>
                     </p>
                 </li>
             {% endfor %}
         </ul>
+
+    {% else %}
+        <p style="color:red">No se encontraron resultados.</p>
+    {% endif %}
 
 {% endblock  %}

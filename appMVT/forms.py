@@ -16,3 +16,11 @@ class FormBlogFamiliar(forms.Form):
     autor = forms.CharField(max_length=30)
     fechaCreacion = forms.DateField()
     descripcion = RichTextFormField(required=False)
+
+
+class BusquedaBlogFamilar(forms.Form):
+    titulo = forms.CharField(max_length=30, required=False)
+
+
+class BusquedaFamilar(forms.Form):
+    apellido = forms.CharField(max_length=30, required=False)

@@ -1,7 +1,7 @@
 # Importar lo necesario
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from appMVT.forms import FamiliarFormulario, FormBlogFamiliar
+from appMVT.forms import FamiliarFormulario, FormBlogFamiliar, BusquedaBlogFamilar, BusquedaFamilar
 from appMVT.models import Familiar, BlogFamiliar
 
 from django.views.generic import ListView
@@ -59,14 +59,14 @@ def crearFamiliares(request):
 
 
 # Crear vista de Buscar Camadas
-def busquedaApellido(request):
+""" def busquedaApellido(request):
 
-    return render(request, "appMVT/busquedaApellido.html")
+    return render(request, "appMVT/busquedaApellido.html") """
 
 # Crear vista de Busqueda
 
 
-def buscar(request):
+""" def buscar(request):
 
     if request.GET["apellido"]:
 
@@ -81,9 +81,11 @@ def buscar(request):
 
     # return
     return render(request, "appMVT/busquedaApellido.html", {"respuesta": respuesta})
-
+ """
 
 # Leer Familiares
+
+
 def leerFamiliares(request):
 
     familiares = Familiar.objects.all()  # Trae todos los profesores
@@ -156,6 +158,21 @@ class FamiliarList(ListView):
     model = Familiar
     template_name = "appMVT/familiares_list.html"
 
+    def get_queryset(self):
+        apellido = self.request.GET.get('apellido', '')
+        if apellido:
+            object_list = self.model.objects.filter(
+                apellido__icontains=apellido)
+        else:
+            object_list = self.model.objects.all()
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["formulario"] = BusquedaFamilar()
+        return context
+
+
 # DetailView --> Para ver el detalle
 
 
@@ -200,6 +217,19 @@ class VerBlogFamiliar(ListView):
 
     model = BlogFamiliar
     template_name = "appMVT/ver_blogfamiliar.html"
+
+    def get_queryset(self):
+        titulo = self.request.GET.get('titulo', '')
+        if titulo:
+            object_list = self.model.objects.filter(titulo__icontains=titulo)
+        else:
+            object_list = self.model.objects.all()
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["formulario"] = BusquedaBlogFamilar()
+        return context
 
 
 class CrearBlogFamiliar(LoginRequiredMixin, CreateView):

@@ -153,10 +153,10 @@ def editarFamiliar(request, id):
 
 # ListView --> Nos permite ver todos los familiares
 # Al tener "LoginRequiredMixin", se necesita iniciar secion para que funcione
-class FamiliarList(ListView):
+class VerFamiliar(ListView):
 
     model = Familiar
-    template_name = "appMVT/familiares_list.html"
+    template_name = "appMVT/ver_familiares.html"
 
     def get_queryset(self):
         apellido = self.request.GET.get('apellido', '')
@@ -176,10 +176,10 @@ class FamiliarList(ListView):
 # DetailView --> Para ver el detalle
 
 
-class FamiliarDetalle(DetailView):
+class DetalleFamiliar(DetailView):
 
     model = Familiar
-    template_name = "appMVT/familiar_detalle.html"
+    template_name = "appMVT/detalle_familiar.html"
 
 # CreateView --> Para crear
 
@@ -187,28 +187,28 @@ class FamiliarDetalle(DetailView):
 class FamiliarCreacion(LoginRequiredMixin, CreateView):
 
     model = Familiar
-    success_url = "/familiares/list"
-    template_name = "appMVT/familiar_form.html"
+    success_url = "/familiares/ver"
+    template_name = "appMVT/crear_familiar.html"
     fields = ['nombre', 'apellido', 'edad', 'fechaNacimiento']
 
 # UpdateView --> Para editar
 
 
-class FamiliarUpdate(UpdateView):
+class EditarFamiliar(UpdateView):
 
     model = Familiar
-    success_url = "/familiares/list"
-    template_name = "appMVT/familiar_form.html"
+    success_url = "/familiares/ver"
+    template_name = "appMVT/crear_familiar.html"
     fields = ['nombre', 'apellido', 'edad', 'fechaNacimiento']
 
 # DeleteView --> Para eliminar
 
 
-class FamiliarDelete(DeleteView):
+class EliminarFamiliar(DeleteView):
 
     model = Familiar
-    template_name = "appMVT/familiar_confirm_delete.html"
-    success_url = "/familiares/list"
+    template_name = "appMVT/eliminar_familiar.html"
+    success_url = "/familiares/ver"
 
 # CreateView --> Para crear blog Familiar
 

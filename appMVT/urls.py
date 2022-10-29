@@ -13,14 +13,14 @@ urlpatterns = [
 
 
     # Clases basadas en Vistas (Familiares)
-    path('familiares/list', views.FamiliarList.as_view(), name='VerFamiliar'),
+    path('familiares/ver', views.VerFamiliar.as_view(), name='VerFamiliar'),
     path('familiar/crear/', views.FamiliarCreacion.as_view(), name='CrearFamiliar'),
     path('familiar/editar/<int:pk>',
-         views.FamiliarUpdate.as_view(), name='EditarFamiliar'),
+         views.EditarFamiliar.as_view(), name='EditarFamiliar'),
     path('familiar/borrar/<int:pk>',
-         views.FamiliarDelete.as_view(), name='BorrarFamiliar'),
+         views.EliminarFamiliar.as_view(), name='BorrarFamiliar'),
     path('familiar/detalle/<int:pk>',
-         views.FamiliarDetalle.as_view(), name='DetalleFamiliar'),
+         views.DetalleFamiliar.as_view(), name='DetalleFamiliar'),
 
     # Clases basadas en Vistas (Blog Familiares)
     path('blogfamiliar/ver', views.VerBlogFamiliar.as_view(), name='VerBlogFamiliar'),

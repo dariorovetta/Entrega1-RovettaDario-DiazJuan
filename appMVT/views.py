@@ -196,10 +196,16 @@ class FamiliarDelete(DeleteView):
 # CreateView --> Para crear blog Familiar
 
 
+class VerBlogFamiliar(ListView):
+
+    model = BlogFamiliar
+    template_name = "appMVT/ver_blogfamiliar.html"
+
+
 class CrearBlogFamiliar(LoginRequiredMixin, CreateView):
 
     model = BlogFamiliar
-    success_url = "/blogfamiliar/crear"
+    success_url = "/blogfamiliar/ver"
     template_name = "appMVT/crear_blogfamiliar.html"
     fields = ['titulo', 'sub_titulo', 'autor',
               'fechaCreacion', 'imagen', 'descripcion']
@@ -208,7 +214,7 @@ class CrearBlogFamiliar(LoginRequiredMixin, CreateView):
 class EditarBlogFamiliar(LoginRequiredMixin, UpdateView):
 
     model = BlogFamiliar
-    success_url = "/appMVT/blogfamiliars"
+    success_url = "/blogfamiliar/ver"
     template_name = "appMVT/editar_blogfamiliar.html"
     fields = ['titulo', 'sub_titulo', 'descripcion',
               'autor', 'fechaCreacion', 'imagen']
@@ -217,5 +223,23 @@ class EditarBlogFamiliar(LoginRequiredMixin, UpdateView):
 class EliminarBlogFamiliar(LoginRequiredMixin, DeleteView):
 
     model = BlogFamiliar
-    success_url = "/appMVT/blogfamiliars"
-    template_name = "appMVT/elimiar_blogfamiliar.html"
+    success_url = "/blogfamiliar/ver"
+    template_name = "appMVT/eliminar_blogfamiliar.html"
+
+
+class DetalleBlogFamiliar(DetailView):
+
+    model = BlogFamiliar
+    template_name = "appMVT/detalle_blogfamiliar.html"
+
+
+@login_required
+def crear(request):
+
+    return render(request, "appMVT/crear.html")
+
+
+@login_required
+def ver(request):
+
+    return render(request, "appMVT/ver.html")

@@ -11,9 +11,9 @@
                 <li>
                     <p>NOMBRE: {{ familiar.nombre }} </p>
                     <p>
-                        <a href="{% url 'Detallar' familiar.id %}">Detalle</a>
-                        <a href="{% url 'Editar' familiar.id %}">Editar</a>
-                        <a href="{% url 'Borrar' familiar.id %}">Borrar</a>
+                        <a href="{% url 'DetalleFamiliar' familiar.id %}">Detalle</a>
+                        <a href="{% url 'EditarFamiliar' familiar.id %}">Editar</a>
+                        <a href="{% url 'BorrarFamiliar' familiar.id %}">Borrar</a>
                     </p>
                 </li>
             {% endfor %}

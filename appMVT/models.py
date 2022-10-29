@@ -28,4 +28,4 @@ class BlogFamiliar(models.Model):
     autor = models.CharField(max_length=30)
     fechaCreacion = models.DateField(null=True)
     imagen = models.ImageField(upload_to='imagenes', null=True, blank=True)
-    descripcion = RichTextField(null=True)
+    descripcion = RichTextField(null=True, blank=True)

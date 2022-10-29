@@ -1,0 +1,22 @@
+{% extends 'appMVT/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <h1>Blog de Familiares</h1>
+        <ul>
+            {% for blogfamiliar in object_list %}
+
+                <li>
+                    <p>TITULO: {{ blogfamiliar.titulo }} </p>
+                    <p>
+                        <a href="{% url 'EditarBlogFamiliar' blogfamiliar.id %}">Editar</a>
+                        <a href="{% url 'EliminarBlogFamiliar' blogfamiliar.id %}">Borrar</a>
+                        <a href="{% url 'DetalleBlogFamiliar' blogfamiliar.id %}">Detalle</a>
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+
+{% endblock  %}

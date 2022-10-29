@@ -10,7 +10,7 @@
         <meta name="author" content="" />
         <title>Landing Page - Start Bootstrap Theme</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
         <!-- Google fonts-->
@@ -23,18 +23,24 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url "Inicio" %}">Inicio</a>
-                <a class="navbar-brand" href="{% url "Crear" %}">Crear Familiar</a>
-                <a class="navbar-brand" href="{% url "Ver" %}">Ver Familiares</a>
-                <a class="navbar-brand" href="{% url "BusquedaApellido" %}">Buscar Familiar</a>
-                <a class="navbar-brand" href="{% url "About" %}">Acerca de Nosotros</a>
-                <a class="navbar-brand" href="{% url "Register" %}">Registrate</a>
-                <a class="navbar-brand" href="{% url "CrearBlogFamiliar" %}">CrearBlogFamiliar</a>
+                <a class="navbar-brand" href="{% url "Crear" %}">Crear</a>
+                <a class="navbar-brand" href="{% url "Ver" %}">Ver</a>
+                <a class="navbar-brand" href="{% url "BusquedaApellido" %}">Buscar</a>
+                <a class="navbar-brand" href="{% url "Register" %}">Registrate!!!</a>
                 {% if not request.user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url "Login" %}">INICIAR</a>
                 {% endif %}
                 {% if request.user.is_authenticated %}
                 <a class="navbar-brand" href="{% url "Perfil" %}">
+
+                    {% if request.user.extensionusuario.avatar %}
                     <img height="40px" src={{request.user.extensionusuario.avatar.url}} alt="">
+                    {% else %}
+                    <img height="40px" src= "https://img2.freepng.es/20180623/iqh/kisspng-computer-icons-avatar-social-media-blog-font-aweso-avatar-icon-5b2e99c40ce333.6524068515297806760528.jpg" alt="Imagen no cargada">
+                    
+                    {% endif %}   
+
+
                 </a>
                 <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
                 <a class="btn btn-primary" href="{% url "Logout" %}">Salir</a>

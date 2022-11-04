@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name="Admin"),
     path('', include('appMVT.urls')),
     path('', include('accounts.urls')),
+    path('', include("appChats.urls")),
 ]
 
 # Para las imagenes

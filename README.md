@@ -3,30 +3,54 @@ Pasos para probar la aplicación:
 1.- Activamos el entorno virtual 
 2.- Ejecutamos python manage.py runserver
 3.- Buscamos la dirección http://127.0.0.1:8000/
-4.- Ya en este punto entramos a la pagina y podemos navegar: En la barra de navegación:
-    a: Inicio
-    b: Familiares: Se encuentra en formulario para crear el nuevo familiar.
-    c: Buscar familiar: se hace la busqueda por apellido, en caso de no encontrar se muestra un mensaje "No hay datos con esa descripción", si se manda vacio aparece otro mensaje que dice "No enviastes datos", y si encuentra el apellido, se crea una lista con los datos encontrados en la base datos.
-    d: Acerta de nosostros (Datos de Dario Rovetta y Juan Carlos Díaz G.)
+4.- Ya en este punto entramos a la pagina y podemos navegar: En la barra de navegación encontraremos varias opciones como:
+
+    a: Inicio: permite ir al inicio de la pagina cuando estemos en otra sección.
+
+    b: Ver: cuenta con un sub menu donde podemos seleccionar que deseamos ver: Familiar o Blog Familiar.
+        Al clickear en en Ver - Familiar, nos aparecen todos los registros de la base de datos de Familar, pero si queremos buscar uno en particular, ingresamos el apellido para luego clickear en buscar y nos aparecera si encuentra el registro, de lo contrario aparecera un mensaje de "No se encontraron resultados". Igualmente aplica a la opcion de ver - blog familiar.
+    
+    
+    c: Crear: cuenta con un sub menu donde podemos seleccionar que deseamos crear: Familiar o Blog Familiar.
+
+        Al clickear en en Crear - Familiar o blog familiar, nos aparece la opcion para iniciar sesion (Previamente debemos estar registrado).
+        
+        Al introducir los datos, se presenta una ventana indicando un mensaje de: "Que bueno verte(nombre del usuario)" que ingreso. Luego seleccionamos el menu crear de nuevo para ingresar a la opcion seleccionada, donde nos presentara los campos que debemos rellenar de: Crear Familiar o el Blog Familiar, luego presionamos el boton enviar y se guardaran los datos, siempre y cuando todos los campos sean correctos.
+    
+    d:  Registrate: permite registrar un usuario para que pueda tener todos los permisos para poder crear  
+        modificar o eliminar algun registro.
+
+    e: Perfil: muestra los datos del usuario que tenga la sesion iniciada.
+
+    f: En la barra al lado de perfil, cuando se ingresa con el usuario, se muestra el usuario que ingreso ó que tiene la sesion activa.
+
+    g:  De ultimo en el menú esta un boton (INICIAR) para ingresar al sistema, al cual darle click, nos pedirá el usuario y la contraseña, de ser correcto nos dara la vienvenida, de lo contrario nos mostrará un mensaje de error.  
+
+        Al ingresar correctamente, el icono cambia a (Salir) para poder cerrar la sesion, indicando que se cerró correctamente.
+
+5.- Al final de la pagina tenemos un link que nos permite ir a la pagina: Acerca de Nosotros, mostrando la información de los creadores del proyecto. Pero si estamos logueados mostrará otro link de Admin, la cual nos permite ingresar a la base de datos simpre y cuando podamos validar la información de seguridad.
+
+
+Al ingresar al sistema en el menu de ver se activa la opcion para poder ver detalle, editar o borrar algun registro, de la base de datos de Familiar o de Blog de Familiar.
 
 
 
 
 Información adicional paso a paso para crear el MVT Proyecto Intermedio (apuntes generales).
 
-1.-  Creamos una carpeta (para el proyecto)
-2.-  Entramos a la carpeta desde la terminal (para indicar la ruta: cd nombre del proyecto)   o desde el menú 
-3.-  Aplicamos desde la terminal $ "code -r .  para que abra la nueva carpeta
-4.-  Creamos un entorno virtual con $  "python -m venv <nombre entorno virtual>"
-5.-  Activamos el entorno virtual con: $. <nombre entorno virtual>/Scripts/activate
-6.-  Inicializar GIT con $ git init
+1.- Creamos una carpeta (para el proyecto)
+2.- Entramos a la carpeta desde la terminal (para indicar la ruta: cd nombre del proyecto)   o desde el menú 
+3.- Aplicamos desde la terminal $ "code -r .  para que abra la nueva carpeta
+4.- Creamos un entorno virtual con $  "python -m venv <nombre entorno virtual>"
+5.- Activamos el entorno virtual con: $. <nombre entorno virtual>/Scripts/activate
+6.- Inicializar GIT con $ git init
 7.- Conectar mi repositorio con la nube de GitHub 
-a.- Verificar el estado con $ git status
-b.- Agregar los archivos con $ git add .
-c.- Agregar un commit a los archivos con $ git commit -m <mensaje>
-d.- Verificar si se hizo el commit con $ git log --oneline
-e.- Copiar los comandos de la pagina GitHub (Copiar comandos de la nube)
-$ git remote add origin  xxxxxx   / $ git branch -M main  / $ git push -u origin main
+    a.- Verificar el estado con $ git status
+    b.- Agregar los archivos con $ git add .
+    c.- Agregar un commit a los archivos con $ git commit -m <mensaje>
+    d.- Verificar si se hizo el commit con $ git log --oneline
+    e.- Copiar los comandos de la pagina GitHub (Copiar comandos de la nube)
+        $ git remote add origin  xxxxxx   / $ git branch -M main  / $ git push -u origin main
 8.-  Instalar Django con $ pip install Django
 9. Cargamos en entorno virtual ($ . <nombre entorno virtual>/Scripts/actívate
 10.- Iniciar el proyecto Django con $ django-admin startproject <nombredeproyecto>
@@ -41,7 +65,6 @@ $ git remote add origin  xxxxxx   / $ git branch -M main  / $ git push -u origin
 	11.- Probar si nuestro proyecto funciona con  $ python manage.py runserver
 	12 .- Agregamos al archivo .girignore (venv, __pycache__, db.sqlite3)
 	12.- Generar la base de datos con la configuración de django con $ python manage.py migrate
-	
 	13.- Crear una vista con el nombre "views.py" en la carpeta de nuestro proyecto
 	a.- Dentro de la vista crear las funciones que necesitamos
 	b.- Como las vistas se ejecutan con cargadores hay que agregar la ruta de las plantillas en "settings.py"

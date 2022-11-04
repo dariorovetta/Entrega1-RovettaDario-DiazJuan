@@ -20,6 +20,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'appChats.apps.AppchatsConfig',
 
     'django.contrib.admin',
@@ -33,9 +34,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'channels',
 ]
-
-# Para inicializar la app
-ASGI_APPLICATION = 'entregableMVT.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -135,3 +133,5 @@ CHANNEL_LAYERS = {
 LOGIN_REDIRECT_URL = "chat-page"
 
 LOGOUT_REDIRECT_URL = "login-user"
+
+ASGI_APPLICATION = 'entregableMVT.asgi.application'

@@ -8,6 +8,7 @@ urlpatterns = [
     path('editarFamiliar/<id>/', views.editarFamiliar, name="EditarFamiliar"),
     path('eliminarFamiliar/<id>/', views.eliminarFamiliar, name="EliminarFamiliar"),
     path('about', views.about, name="About"),
+    path('video', views.video, name="Video"),
 
     # Clases basadas en Vistas (Familiares)
     path('familiares/ver', views.VerFamiliar.as_view(), name='VerFamiliar'),

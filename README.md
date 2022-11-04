@@ -280,3 +280,6 @@ HERENCIA
 2do colocamos lo que vamos a repetir en los demás tempates y lo llevamos al base.html, tomando en cuenta la etiqueta de cierre del </html> 
 
 
+python -m pip install -U channels["daphne"]
+
+https://channels.readthedocs.io/en/stable/installation.html

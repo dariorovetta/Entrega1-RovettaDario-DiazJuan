@@ -211,3 +211,9 @@ class DetalleBlogFamiliar(DetailView):
 
     model = BlogFamiliar
     template_name = "appMVT/detalle_blogfamiliar.html"
+    
+    
+@login_required
+def video(request):
+
+    return render(request, "appMVT/video.html")

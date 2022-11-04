@@ -8,8 +8,6 @@ from appChats import routing
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'entregableMVT.settings')
 
 application = get_asgi_application()
-
-
 application = ProtocolTypeRouter(
     {
         "http": get_asgi_application(),

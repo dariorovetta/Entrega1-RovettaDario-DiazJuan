@@ -5,7 +5,6 @@
 {% block contenidoQueCambia %}
 
 <h2>Editar Perfil</h2>
-<!--<h2>De {{usuario}}</h2>-->
 
 <form action="" method="POST" enctype='multipart/form-data'>{% csrf_token %}
 
@@ -19,4 +18,5 @@
     
 </form>
 <p><a href={% url 'CambiarContrasenia' %}>Cambiar contraseña</a></p>
+
 {% endblock  %}

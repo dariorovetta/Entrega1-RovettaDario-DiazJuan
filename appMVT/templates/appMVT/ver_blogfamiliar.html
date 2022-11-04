@@ -13,17 +13,14 @@
 
     {% if object_list %}
 
-
         <ul style="text-align: left">
             <p></p>
             {% for blogfamiliar in object_list %}
-
                 <li>
-                    <p>Título: {{ blogfamiliar.titulo }} -->
-                    
+                    <p>Título: {{ blogfamiliar.titulo }} ➝
                         <a href="{% url 'EditarBlogFamiliar' blogfamiliar.id %}">Editar</a>
                         <a href="{% url 'DetalleBlogFamiliar' blogfamiliar.id %}">Detalle</a>
-                        <a style="color:red" href="{% url 'EliminarBlogFamiliar' blogfamiliar.id %}">Borrar</a>
+                        <a href="{% url 'EliminarBlogFamiliar' blogfamiliar.id %}">Borrar</a>
                     </p>
                 </li>
             {% endfor %}

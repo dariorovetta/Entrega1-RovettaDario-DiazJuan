@@ -11,16 +11,18 @@
         <button>Buscar</button>
 
     </form>
+    
     {% if object_list %}
+
         <ul style="text-align: left;" >
             <p></p>
             {% for familiar in object_list %}
 
                 <li>
-                    <p>Nombre: {{ familiar.nombre }} -->
+                    <p>Nombre: {{ familiar.nombre }} ➝
                         <a href="{% url 'DetalleFamiliar' familiar.id %}">Detalle</a>
                         <a href="{% url 'EditarFamiliar' familiar.id %}">Editar</a>
-                        <a style="color:red" href="{% url 'BorrarFamiliar' familiar.id %}">Borrar</a>
+                        <a href="{% url 'BorrarFamiliar' familiar.id %}">Borrar</a>
                     </p>
                 </li>
             {% endfor %}
@@ -29,6 +31,5 @@
     {% else %}
         <p style="color:red">No se encontraron resultados.</p>
     {% endif %}
-
 
 {% endblock  %}

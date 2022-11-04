@@ -1,36 +1,25 @@
 # Importar lo necesario
-from django.http import HttpResponse
-from django.shortcuts import redirect, render
-from appMVT.forms import FamiliarFormulario, FormBlogFamiliar, BusquedaBlogFamilar, BusquedaFamilar
+from appMVT.forms import FamiliarFormulario, BusquedaBlogFamilar, BusquedaFamilar
 from appMVT.models import Familiar, BlogFamiliar
-
+from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-
+from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 from django.contrib.auth.decorators import login_required
 
-from django.views.generic.detail import DetailView
-
 # Vista de Inicio
-
-
 @login_required
 def inicio(request):
 
     return render(request, "appMVT/inicio.html")
 
 # Vista de About
-
-
 def about(request):
 
     return render(request, "appMVT/about.html")
 
 # Vista de los Familiares
-
-
 def crearFamiliares(request):
 
     if request.method == 'POST':
@@ -58,37 +47,10 @@ def crearFamiliares(request):
     return render(request, "appMVT/familiares.html", {"miFormulario": miFormulario})
 
 
-# Crear vista de Buscar Camadas
-""" def busquedaApellido(request):
-
-    return render(request, "appMVT/busquedaApellido.html") """
-
-# Crear vista de Busqueda
-
-
-""" def buscar(request):
-
-    if request.GET["apellido"]:
-
-        apellido = request.GET['apellido']
-        familiares = Familiar.objects.filter(apellido__icontains=apellido)
-
-        return render(request, "appMVT/busquedaApellido.html", {"familiares": familiares, "apellido": apellido})
-
-    else:
-
-        respuesta = "No enviaste datos"
-
-    # return
-    return render(request, "appMVT/busquedaApellido.html", {"respuesta": respuesta})
- """
-
 # Leer Familiares
-
-
 def leerFamiliares(request):
 
-    familiares = Familiar.objects.all()  # Trae todos los profesores
+    familiares = Familiar.objects.all()  # Trae todos los familiares
 
     contexto = {"familiares": familiares}
 
@@ -96,7 +58,6 @@ def leerFamiliares(request):
 
 
 # Eliminar un familiar
-
 def eliminarFamiliar(request, id):
 
     familiar = Familiar.objects.get(id=id)
@@ -111,7 +72,6 @@ def eliminarFamiliar(request, id):
 
 
 # Editar Familiar
-
 def editarFamiliar(request, id):
 
     # Recibe el nombre del familiar que vamos a modificar
@@ -152,7 +112,6 @@ def editarFamiliar(request, id):
 # Clases basadas en vistas
 
 # ListView --> Nos permite ver todos los familiares
-# Al tener "LoginRequiredMixin", se necesita iniciar secion para que funcione
 class VerFamiliar(ListView):
 
     model = Familiar
@@ -174,16 +133,13 @@ class VerFamiliar(ListView):
 
 
 # DetailView --> Para ver el detalle
-
-
 class DetalleFamiliar(DetailView):
 
     model = Familiar
     template_name = "appMVT/detalle_familiar.html"
 
 # CreateView --> Para crear
-
-
+# Al tener "LoginRequiredMixin", se necesita iniciar secion para que funcione
 class FamiliarCreacion(LoginRequiredMixin, CreateView):
 
     model = Familiar
@@ -192,9 +148,7 @@ class FamiliarCreacion(LoginRequiredMixin, CreateView):
     fields = ['nombre', 'apellido', 'edad', 'fechaNacimiento']
 
 # UpdateView --> Para editar
-
-
-class EditarFamiliar(UpdateView):
+class EditarFamiliar(LoginRequiredMixin, UpdateView):
 
     model = Familiar
     success_url = "/familiares/ver"
@@ -202,17 +156,13 @@ class EditarFamiliar(UpdateView):
     fields = ['nombre', 'apellido', 'edad', 'fechaNacimiento']
 
 # DeleteView --> Para eliminar
-
-
-class EliminarFamiliar(DeleteView):
+class EliminarFamiliar(LoginRequiredMixin, DeleteView):
 
     model = Familiar
     template_name = "appMVT/eliminar_familiar.html"
     success_url = "/familiares/ver"
 
 # CreateView --> Para crear blog Familiar
-
-
 class VerBlogFamiliar(ListView):
 
     model = BlogFamiliar
@@ -231,45 +181,33 @@ class VerBlogFamiliar(ListView):
         context["formulario"] = BusquedaBlogFamilar()
         return context
 
-
+# Crear blog familiar
 class CrearBlogFamiliar(LoginRequiredMixin, CreateView):
 
     model = BlogFamiliar
     success_url = "/blogfamiliar/ver"
     template_name = "appMVT/crear_blogfamiliar.html"
-    fields = ['titulo', 'sub_titulo', 'autor',
+    fields = ['titulo', 'subtitulo', 'autor',
               'fechaCreacion', 'imagen', 'descripcion']
 
-
+# Editar blog familiar
 class EditarBlogFamiliar(LoginRequiredMixin, UpdateView):
 
     model = BlogFamiliar
     success_url = "/blogfamiliar/ver"
     template_name = "appMVT/editar_blogfamiliar.html"
-    fields = ['titulo', 'sub_titulo', 'descripcion',
+    fields = ['titulo', 'subtitulo', 'descripcion',
               'autor', 'fechaCreacion', 'imagen']
 
-
+# Eliminar blog familiar
 class EliminarBlogFamiliar(LoginRequiredMixin, DeleteView):
 
     model = BlogFamiliar
     success_url = "/blogfamiliar/ver"
     template_name = "appMVT/eliminar_blogfamiliar.html"
 
-
+# Detallar blog familiar
 class DetalleBlogFamiliar(DetailView):
 
     model = BlogFamiliar
     template_name = "appMVT/detalle_blogfamiliar.html"
-
-
-@login_required
-def crear(request):
-
-    return render(request, "appMVT/crear.html")
-
-
-@login_required
-def ver(request):
-
-    return render(request, "appMVT/ver.html")

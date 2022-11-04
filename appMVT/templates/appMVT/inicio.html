@@ -4,14 +4,14 @@
 
 {% block contenidoQueCambia %}
 
-<!--Aqui va lo que cambia, y lo asociado a esta vista-->
-
 <div class="text-center">
+
     {% if request.user.extensionusuario.avatar %}
         <img height="40px" src={{request.user.extensionusuario.avatar.url}} alt="">
     {% else %}
         Imagen no cargada
     {% endif %}
+    
     <h3>Que bueno verte {{user.username}}</h3>
 </div>
 

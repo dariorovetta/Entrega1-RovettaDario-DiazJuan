@@ -4,10 +4,9 @@
 
 {% block contenidoQueCambia %}
 
-
     <form method="post">{% csrf_token %}
         ¿Estas seguro que deseas borrar el Blog familiar "{{ object }}"?
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Confirmar" />
     </form>
 
 {% endblock  %}

@@ -4,7 +4,6 @@
 
 {% block contenidoQueCambia %}
 
-
     <form method="post">{% csrf_token %}
         ¿Estas seguro que deseas borrar el familiar "{{ object }}"?
         <input type="submit" value="Confirmar" />

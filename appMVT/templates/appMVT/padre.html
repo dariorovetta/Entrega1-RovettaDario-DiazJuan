@@ -23,17 +23,17 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url "Inicio" %}">Inicio</a>
-                
+                <!-- Lista desplegable-->
                 <div class="dropdown">        
-                    <a class="navbar-brand" href="{% url "Ver" %}">Ver</a>
+                    <a class="navbar-brand" >Ver</a>
                     <div class="dropdown-content">
                         <a href="{% url 'VerFamiliar' %}">Familiar</a>
                         <a href="{% url 'VerBlogFamiliar' %}">Blog Familiar</a>
                     </div>
                 </div>
-
+                <!-- Lista desplegable-->
                 <div class="dropdown">
-                    <a class="navbar-brand" href="{% url "Crear" %}">Crear</a>
+                    <a class="navbar-brand" >Crear</a>
                     <div class="dropdown-content">
                         <a href="{% url 'CrearFamiliar' %}">Familiar</a>
                         <a href="{% url 'CrearBlogFamiliar' %}">Blog Familiar</a>
@@ -41,9 +41,11 @@
                 </div>
                 
                 <a class="navbar-brand" href="{% url "Register" %}">¡Registrate!</a>
+
                 {% if not request.user.is_authenticated %}
                 <a class="btn btn-primary" href="{% url "Login" %}">INICIAR</a>
                 {% endif %}
+
                 {% if request.user.is_authenticated %}
                 <a class="navbar-brand" href="{% url "Perfil" %}">Perfil</a>
                 <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
@@ -58,21 +60,10 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
+
                             {% block contenidoQueCambia %}
                             {% endblock  %}
 
-                            <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-
-                                <div class="d-none" id="submitSuccessMessage">
-                                    <div class="text-center mb-3">
-                                        <div class="fw-bolder">Form submission successful!</div>
-                                        <p>To activate this form, sign up at</p>
-                                        <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                    </div>
-                                </div>
-
-                                <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -85,17 +76,15 @@
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item"> <a class="navbar-brand" href="{% url "About" %}">Acerca de Nosotros</a></li>
+
                             {% if request.user.is_authenticated %}
-                            <li class="list-inline-item">.</li>
                             <li class="list-inline-item"> <a class="navbar-brand" href= "http://127.0.0.1:8000/admin/">Admin</a></li>
-                            
                             {% endif %}
                           
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Proyecto Final de Juan Diaz Guevara y Dario Rovetta</p>
                     </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto"></div>
                 </div>
             </div>
         </footer>
@@ -103,10 +92,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

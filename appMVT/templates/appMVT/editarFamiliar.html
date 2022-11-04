@@ -4,15 +4,14 @@
 
 {% block contenidoQueCambia %}
 
-<h2>Agregar Nuevos Familiares</h2>
+<h2>Editar Familiar</h2>
 
 &nbsp;
 
     {% if  miFormulario.errors %}
-
     <p style="color: red;"> Estan mal los datos, revisar</p>
-
     {% endif %}
+
     <form action="" method="POST">{% csrf_token %}
 
         <table>
@@ -23,5 +22,4 @@
     
     </form>
     
-
 {% endblock  %}

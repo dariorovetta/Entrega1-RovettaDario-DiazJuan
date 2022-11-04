@@ -6,19 +6,17 @@
 
 {% if blogfamiliar.imagen %}
 <img height="200px" src={{blogfamiliar.imagen.url}} alt="">
-
 {% else %}
 Imagen no cargada
 {% endif %}
 
-<div>
-    <p>Titulo: {{ blogfamiliar.titulo }}</p>
-    <p>Sub-Titulo: <i>{{ blogfamiliar.sub_titulo }}</i></p>
-    <p>Autor: <i>{{ blogfamiliar.autor }}</i></p>
-    <p>Fecha de Creación: <i>{{ blogfamiliar.fechaCreacion }}</i></p>
-    
-    <p>Descripción: <i>{{ blogfamiliar.descripcion | safe }}</i></p>
+<p>
+    <li>Titulo: {{ blogfamiliar.titulo }}</li>
+    <li>Subtitulo: {{ blogfamiliar.subtitulo }}</li>
+    <li>Autor: {{ blogfamiliar.autor }}</li>
+    <li>Fecha de Creación: {{ blogfamiliar.fechaCreacion }}</li>
+    <li>Descripción: {{ blogfamiliar.descripcion | safe }}</li>
+    <li><a href="{% url 'VerBlogFamiliar' %}">Regresar</a></li>
+</p>
 
-    <p><a href="{% url 'VerBlogFamiliar' %}">Regresar</a></p>
-</div>
 {% endblock  %}

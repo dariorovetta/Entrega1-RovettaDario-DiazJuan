@@ -1,6 +1,5 @@
 from django.http import HttpResponse
 from django.template import loader
-
 from appMVT.models import Familiar
 import datetime
 

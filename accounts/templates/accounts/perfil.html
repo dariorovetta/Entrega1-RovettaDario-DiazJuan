@@ -5,24 +5,25 @@
 {% block contenidoQueCambia %}
 
 <h1>Informacion del usuario:  {{user}}</h1>
+
 <p>
     <ul style="list-style: none;">
-    <li>
-        {% if request.user.extensionusuario.avatar %}
-        <img height="80px" src={{request.user.extensionusuario.avatar.url}} alt="">
-        {% else %}
-        Imagen no cargada
-        {% endif %}
-    </li>
+        <li>
+            {% if request.user.extensionusuario.avatar %}
+            <img height="80px" src={{request.user.extensionusuario.avatar.url}} alt="">
+            {% else %}
+            Imagen no cargada
+            {% endif %}
+        </li>
     </ul>
 </p>
 <p>
     <ul style="list-style: none;">
-    <li>Nombre: {{request.user.first_name}}</li>
-    <li>Apellido: {{request.user.last_name}}</li>
-    <li>Email: {{request.user.email}}</li>
-    <li>Descripción: {{request.user.extensionusuario.descripcion}}</li>
-    <li>Red Social: {{request.user.extensionusuario.red_social}}</li>
+        <li>Nombre: {{request.user.first_name}}</li>
+        <li>Apellido: {{request.user.last_name}}</li>
+        <li>Email: {{request.user.email}}</li>
+        <li>Descripción: {{request.user.extensionusuario.descripcion}}</li>
+        <li>Red Social: {{request.user.extensionusuario.red_social}}</li>
     </ul>
 </p>
 <p>
@@ -31,4 +32,5 @@
 <p>
     <a href={% url 'CambiarContrasenia' %}>Cambiar contraseña</a>
 </p>
+
 {% endblock %}

@@ -11,16 +11,8 @@
             {{form.media}}
             {{form.as_p}}
         </table>
-{% comment %}         <button>Crear Blog Familiar</button> {% endcomment %}
         <input type="submit" value="Enviar" />
+
     </form>
     
-{% comment %}     <form method="POST">
-
-        {% csrf_token %}
-        {{form.media}}
-        {{ form.as_p }}
-
-        <input type="submit" value="Enviar" />
-    </form> {% endcomment %}
 {% endblock  %}

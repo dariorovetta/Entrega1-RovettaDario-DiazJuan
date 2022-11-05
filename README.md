@@ -283,3 +283,10 @@ HERENCIA
 python -m pip install -U channels["daphne"]
 
 https://channels.readthedocs.io/en/stable/installation.html
+
+Comandos para reestablecer el codigo Local
+
+git fetch
+git reset --hard HEAD
+git merge origin/$CURRENT_BRANCH
+

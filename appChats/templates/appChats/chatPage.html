@@ -4,7 +4,7 @@
 	<center><h1>Hola {{request.user}}.  Bienvenido los ¡10 puntos!</h1></center>
 	<br>
 	{% if request.user.is_authenticated %}
-	<center><a href = "{% url 'Login' %}">Cerrar Chat</a></center>
+	<center><a href = "{% url 'Inicio' %}">Cerrar Chat</a></center>
 	{% endif %}
 	<div
 	class="chat__item__container"

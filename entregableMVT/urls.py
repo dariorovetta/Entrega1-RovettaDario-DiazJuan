@@ -6,10 +6,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls, name="Admin"),
     path('', include('appMVT.urls')),
-    path('', include('accounts.urls')),
-    path('', include("appChats.urls")),
+    path('accounts/', include('accounts.urls')),
+    path('appChats/', include("appChats.urls")),
+    path('admin/', admin.site.urls, name="Admin"),
 ]
 
 # Para las imagenes

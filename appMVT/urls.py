@@ -3,6 +3,7 @@ from appMVT import views
 
 urlpatterns = [
     path('', views.inicio, name="Inicio"),  # Esta es nuestra primer view
+    
     path('leerFamiliares', views.leerFamiliares, name="LeerFamiliares"),
     path('crearFamiliares', views.crearFamiliares, name="CrearFamiliares"),
     path('editarFamiliar/<id>/', views.editarFamiliar, name="EditarFamiliar"),

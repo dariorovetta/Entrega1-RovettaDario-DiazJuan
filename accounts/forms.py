@@ -18,11 +18,11 @@ class UserRegisterForm(UserCreationForm):
 class UserEditForm(forms.Form):
     # Especificar los campos
     email = forms.EmailField(label="Modificar E-mail")
-    first_name = forms.CharField(label='Nombre')
-    last_name = forms.CharField(label='Apellido')
+    first_name = forms.CharField(label='Nombre', required=False)
+    last_name = forms.CharField(label='Apellido', required=False)
     avatar = forms.ImageField(required=False)
-    descripcion = forms.CharField(label='Descripción')
-    red_social = forms.CharField(label='Red Social')
+    descripcion = forms.CharField(label='Descripción', required=False)
+    red_social = forms.CharField(label='Red Social', required=False)
 
 
 class MiCambioDePassword(PasswordChangeForm):

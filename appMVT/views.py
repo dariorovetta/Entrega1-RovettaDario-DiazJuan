@@ -9,7 +9,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 # Vista de Inicio
-@login_required
 def inicio(request):
 
     return render(request, "appMVT/inicio.html")

@@ -4,4 +4,4 @@ if [ $VIRTUAL_ENVIRONMENT ]
 then 
     deactivate
 fi
-. MVTdario/Scripts/activate
+. venv/Scripts/activate
